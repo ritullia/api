@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0 auto;
+
+}
+
+
+.container{
+    background-color: darkgray;
+    width: 18rem;
+    height: auto;
+}
+
+.card{
+    width: 18rem;
+    background-color: dimgrey;
+}
