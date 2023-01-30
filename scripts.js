@@ -1,4 +1,4 @@
-function createCard(imgUrl, brand, name, price, description, productType){
+function createCard(imgUrl, brand, name, price, description, productType) {
 
     // let mainDiv = document.getElementById('container');
     let card = document.createElement('div');
@@ -11,15 +11,15 @@ function createCard(imgUrl, brand, name, price, description, productType){
     img.src = imgUrl
     img.classList.add('card-img-top')
 
-    console.log(card, img)
+    // console.log(card, img)
 
     let cardText = document.createElement('div')
     cardText.className = 'card-body'
     cardText.classList.add('card-body')
     card.appendChild(cardText);
 
-   
-    let newBrand  = document.createElement('h5');
+
+    let newBrand = document.createElement('h5');
     newBrand.textContent = brand;
     newBrand.classList.add('card-title')
 
@@ -52,7 +52,7 @@ function createCard(imgUrl, brand, name, price, description, productType){
     cardText.append(newBrand, newName, newPrice, newDescr, newProdTyp, buttDel)
 
     card.append(img, cardText);
-    return(card)
+    return (card)
 }
 
 createCard()
@@ -66,18 +66,17 @@ async function getData() {
     const response = await fetch(request);
     const data = await response.json();
     // Pasitikrinimui    
-    console.log(data);
-   
+    // console.log(data);
 
-    for(let i = 0; i < data.length; i++){
+
+    for (let i = 0; i < data.length; i++) {
         const elm = data[i]
-        console.log(elm)
-        return elm
+        return elm;
+
     }
 
     // let imgUrl = data[0].image_link
     // console.log(imgUrl)
-
     //  console.log(data[0].image_link
     //    )
     // //  console.log(data[0].id)
@@ -94,7 +93,7 @@ async function getData() {
 getData()
 
 
-function appendCard(card){
+function appendCard(card) {
     let parent = document.querySelector('#container')
     parent.append(card)
 }
@@ -108,7 +107,7 @@ btn.addEventListener('click', function () {
 
         let { image_link, brand, name, price, description, productType } = data;
 
-       let card = createCard(image_link, brand, name, price, description, productType);
+        let card = createCard(image_link, brand, name, price, description, productType);
         console.log(card);
 
         appendCard(card);
@@ -116,6 +115,17 @@ btn.addEventListener('click', function () {
     }).catch(error => {
         console.log(error);
     })
+});
+
+
+
+
+let btnDel = document.querySelector(".btn-danger");
+btnDel.addEventListener('click', function () {
+    let reset = document.querySelector('.card');
+    reset.innerHTML = ''
 })
+
+document.get
 
 
