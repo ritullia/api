@@ -47,25 +47,19 @@ function createCard(imgUrl, brand, name, price, description, productType) {
     buttDel.classList.add('btn-danger')
 
     buttDel.addEventListener('click', ()=>{
-        let parent = document.querySelector('.card');
-        console.log(parent)
-        parent.remove(card)
+        // let parent = document.querySelector('.card');
+        // console.log(parent, 'Ištryniau?')
+        // parent.remove(card)
+        // console.log(event.target.parentElement.parentElement)
+        // event.target.parentElement.parentElement.remove()
+        card.remove() // pats paprasciausias elementas
+        
     })
-
-
-    // let newCard = document.createElement('div');
-    // newCard.className = "container";
-
-    // let styleCard = document.createElement("div");
-    // styleCard.className = "flex-card";
 
     cardText.append(newBrand, newName, newPrice, newDescr, newProdTyp, buttDel)
 
     card.append(img, cardText);
     return (card)
-
-    
-
 
 }
 
@@ -112,7 +106,7 @@ let btn = document.querySelector("button");
 btn.addEventListener('click', function () {
     getData().then(data => {
         data.forEach(item => {
-            console.log(item);
+            // console.log(item);
             let { image_link, brand, name, price, description, productType } = item;
             let card = createCard(image_link, brand, name, price, description, productType);
             console.log(card);
@@ -139,12 +133,6 @@ function deleteCardData(e) {
     console.log("Button clicked")
 
 }
-
-
-
-
-
-let btnDel = document.querySelector(".btn-danger");
 
 
 document.get
