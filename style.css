@@ -3,6 +3,7 @@
     margin: 0 auto;
 } */
 body {
+
   background-repeat: no-repeat;
   background: rgb(197, 69, 246);
   background: linear-gradient(
@@ -25,6 +26,12 @@ body {
   display: flex;
   margin: 10px;
   padding: 25px;
+}
+
+.btn-secondary{
+  width: 120px;
+  background-color: darkmagenta!important;
+  border: none;
 }
 
 .card {

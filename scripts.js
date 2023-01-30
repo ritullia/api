@@ -42,6 +42,7 @@ function createCard(imgUrl, brand, name, price, description, productType) {
     let buttDel = document.createElement('button')
     buttDel.textContent = 'Delete'
     buttDel.classList.add('btn-danger')
+    
 
     // let newCard = document.createElement('div');
     // newCard.className = "container";
@@ -53,6 +54,8 @@ function createCard(imgUrl, brand, name, price, description, productType) {
 
     card.append(img, cardText);
     return (card)
+
+ 
 }
 
 createCard()
@@ -61,17 +64,17 @@ console.log(createCard)
 
 
 async function getData() {
-    const requestURL = 'https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline';
+    const requestURL = 'https://makeup-api.herokuapp.com/api/v1/products.json';
     const request = new Request(requestURL);
     const response = await fetch(request);
     const data = await response.json();
     // Pasitikrinimui    
-    // console.log(data);
+    console.log(data);
 
 
     for (let i = 0; i < data.length; i++) {
-        const elm = data[i]
-        return elm;
+        const elem = data[i]
+        return elem;
 
     }
 
@@ -117,14 +120,17 @@ btn.addEventListener('click', function () {
     })
 });
 
+function deleteCardData(e){
+    console.log("Button clicked")
+    
+}
+
+
 
 
 
 let btnDel = document.querySelector(".btn-danger");
-btnDel.addEventListener('click', function () {
-    let reset = document.querySelector('.card');
-    reset.innerHTML = ''
-})
+
 
 document.get
 
