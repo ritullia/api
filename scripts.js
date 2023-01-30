@@ -28,12 +28,15 @@ function createCard(imgUrl, brand, name, price, description, productType) {
     newName.classList.add('card-title')
 
     let newPrice = document.createElement('p');
+    newPrice.innerHTML = '€';
     newPrice.textContent = price;
-    newPrice.classList.add('card-text')
+    newPrice.classList.add('card-text');
+    newPrice.classList.add('price-text')
 
     let newDescr = document.createElement('p');
     newDescr.textContent = description;
     newDescr.classList.add('card-text')
+    
 
     let newProdTyp = document.createElement('p');
     newProdTyp.textContent = productType;
@@ -42,7 +45,13 @@ function createCard(imgUrl, brand, name, price, description, productType) {
     let buttDel = document.createElement('button')
     buttDel.textContent = 'Delete'
     buttDel.classList.add('btn-danger')
-    
+
+    buttDel.addEventListener('click', ()=>{
+        let parent = document.querySelector('.card');
+        console.log(parent)
+        parent.remove(card)
+    })
+
 
     // let newCard = document.createElement('div');
     // newCard.className = "container";
@@ -55,7 +64,9 @@ function createCard(imgUrl, brand, name, price, description, productType) {
     card.append(img, cardText);
     return (card)
 
- 
+    
+
+
 }
 
 createCard()
@@ -64,19 +75,12 @@ console.log(createCard)
 
 
 async function getData() {
-    const requestURL = 'https://makeup-api.herokuapp.com/api/v1/products.json';
+    const requestURL = 'https://makeup-api.herokuapp.com/api/v1/products.json?brand=clinique';
     const request = new Request(requestURL);
     const response = await fetch(request);
     const data = await response.json();
     // Pasitikrinimui    
     console.log(data);
-
-
-    for (let i = 0; i < data.length; i++) {
-        const elem = data[i]
-        return elem;
-
-    }
 
     // let imgUrl = data[0].image_link
     // console.log(imgUrl)
@@ -93,7 +97,7 @@ async function getData() {
 
 }
 
-getData()
+// getData()
 
 
 function appendCard(card) {
@@ -101,28 +105,39 @@ function appendCard(card) {
     parent.append(card)
 }
 
-appendCard()
+// appendCard()
 
 
 let btn = document.querySelector("button");
 btn.addEventListener('click', function () {
     getData().then(data => {
+        data.forEach(item => {
+            console.log(item);
+            let { image_link, brand, name, price, description, productType } = item;
+            let card = createCard(image_link, brand, name, price, description, productType);
+            console.log(card);
+    
+            appendCard(card);
+        });
 
-        let { image_link, brand, name, price, description, productType } = data;
+        // for (let i = 0; i < data.length; i++) {
+        //     const elem = data[i]
+        //     // console.log(data[i])
+        //     // console.log(elem)
+        //     return elem;
 
-        let card = createCard(image_link, brand, name, price, description, productType);
-        console.log(card);
+        // } 
 
-        appendCard(card);
+        // console.log(data)
 
     }).catch(error => {
         console.log(error);
     })
 });
 
-function deleteCardData(e){
+function deleteCardData(e) {
     console.log("Button clicked")
-    
+
 }
 
 
