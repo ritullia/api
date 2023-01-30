@@ -47,12 +47,9 @@ function createCard(imgUrl, brand, name, price, description, productType) {
     buttDel.classList.add('btn-danger')
 
     buttDel.addEventListener('click', ()=>{
-        // let parent = document.querySelector('.card');
-        // console.log(parent, 'Ištryniau?')
-        // parent.remove(card)
-        // console.log(event.target.parentElement.parentElement)
+        // console.log(event.target.parentElement.parentElement) // nepamiršti įrašyti event žodį į funkciją
         // event.target.parentElement.parentElement.remove()
-        card.remove() // pats paprasciausias elementas
+        card.remove() // pats paprasciausias budas :)
         
     })
 
