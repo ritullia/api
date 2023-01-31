@@ -33,9 +33,14 @@ function createCard(imgUrl, brand, name, price, description, productType) {
     newPrice.classList.add('card-text');
     newPrice.classList.add('price-text')
 
+    let priceCurrency = document.createElement('p');
+    priceCurrency.innerHTML = '€';
+    priceCurrency.classList.add('currency');
+
     let newDescr = document.createElement('p');
     newDescr.textContent = description;
     newDescr.classList.add('card-text')
+    
     
 
     let newProdTyp = document.createElement('p');
@@ -53,7 +58,7 @@ function createCard(imgUrl, brand, name, price, description, productType) {
         
     })
 
-    cardText.append(newBrand, newName, newPrice, newDescr, newProdTyp, buttDel)
+    cardText.append(newBrand, newName, newPrice, priceCurrency, newDescr, newProdTyp, buttDel)
 
     card.append(img, cardText);
     return (card)
